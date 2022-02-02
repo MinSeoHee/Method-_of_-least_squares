@@ -1,0 +1,41 @@
+
+### 1. 선형회귀(Simple linear regression)
+## 1.1 최소제곱법(Method of least squares) 
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# Data
+x_data = [2, 4, 6, 8]
+y_data = [81, 93, 91, 97]
+
+
+# 데이터 변환하기(Converting data)
+x = np.array(x_data)
+y = np.array(y_data)
+plt.scatter(x, y)
+
+
+# 평균 구하기(Finding the average value)
+mx = np.mean(x)
+my = np.mean(y)
+
+
+# 기울기 구하기(Finding the slope)
+a_up = np.sum((mx - x) * (my - y))
+a_down = np.sum((mx - x)**2)
+a = a_up / a_down
+
+
+# y절편 구하기(Getting the y-intercept)
+b = (my - (mx * a))
+
+
+# 일차함수 만들기(Making a linear function)
+f = a * x + b
+
+
+# 결과 보여주기(Showing the results)
+print('a:', a, '   b:', b, '   f:', f)
+plt.plot(x, f, 'r')
